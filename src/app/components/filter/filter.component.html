@@ -1,0 +1,6 @@
+<mat-form-field class="form-field">
+  <input matInput type="text" (keyup)="inputEntered(filterValue)" placeholder="Filter Agents" [(ngModel)]="filterValue"/>
+  <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue='';inputEntered(filterValue)">
+    <i class="fa fa-times"></i>
+  </button>
+</mat-form-field>

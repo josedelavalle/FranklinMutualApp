@@ -1,0 +1,31 @@
+
+div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%; 
+}
+.card-actions {
+    padding-bottom: 0;
+    text-align: center !important;
+}
+.address-top {
+    margin: 0;
+}
+.address-bottom {
+    margin-bottom: 10px;
+}
+.fa-phone {
+    font-size: 1.2em;
+    top: 2px;
+    position: relative;
+    padding-right: 5px;
+}
+.mat-card-title {
+    font-size: 1.1em;
+    line-height: 1.2em;
+}
+
+.blog-card {
+    width: 100%;
+    margin: 30px 0 0;
+}

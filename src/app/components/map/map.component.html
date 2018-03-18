@@ -1,0 +1,16 @@
+<agm-map (mapReady)="mapReady($event)" [scrollwheel]="false" [latitude]="defaultLat" [longitude]="defaultLng" [zoom]="8" [mapTypeId]="'hybrid'">
+ 
+ <!-- <div *ngFor="let marker of agencies">
+  <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
+ </div>  -->
+ <agm-heatmap-layer [data]="data" [radius]="20"></agm-heatmap-layer>
+ <agm-circle [latitude]="defaultLat"
+                  [longitude]="defaultLng"
+                  [circleDraggable]="true"
+                  [editable]="true"
+                  [fillColor]="'red'"
+                  [radius]="50000"
+      >
+      </agm-circle>
+</agm-map>
+  

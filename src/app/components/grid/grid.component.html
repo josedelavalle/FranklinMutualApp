@@ -1,0 +1,22 @@
+<div class="grid-container">
+    <mat-grid-list gutterSize="10px" rowHeight="2:1" [cols]="8">
+      <mat-grid-tile
+          [colspan]="3"
+          [rowspan]="9"
+          [style.background]="'#ddd'">
+            <app-map></app-map>      
+      </mat-grid-tile>
+      <mat-grid-tile 
+          [colspan]="5" 
+          [rowspan]="2" 
+          [style.background]="'#ddd'">
+            <app-chart></app-chart>
+      </mat-grid-tile>
+      <mat-grid-tile 
+          [colspan]="5" 
+          [rowspan]="7" 
+          [style.background]="'#ddd'">
+            <app-agent-list></app-agent-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>

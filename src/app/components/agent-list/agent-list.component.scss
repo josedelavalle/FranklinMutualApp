@@ -1,0 +1,25 @@
+.blog-card {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.showing-string {
+    position: absolute;
+    z-index: 2;
+    background-color: #ddd;
+}
+.agency-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}

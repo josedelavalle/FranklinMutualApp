@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    background-color: #a1a2a3 !important;
+}
+* {
+    outline: none !important;
+    user-select: none;
+}
+app-agent-card {
+    width: 100%;
+}
+.mat-card-header-text {
+    margin: 0 !important;
+}

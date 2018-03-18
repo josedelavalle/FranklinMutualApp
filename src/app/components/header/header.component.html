@@ -1,0 +1,19 @@
+<mat-toolbar color="default">
+  <div class="col">
+    <img height="50" src="assets/logo.png" />
+  </div>
+  <div class="col-6 text-center">
+    <app-filter></app-filter>
+  </div>
+  
+  <div class="col text-right">
+    <div class="menu-icon" [matMenuTriggerFor]="appMenu">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-menu #appMenu="matMenu">
+  <div class="menu-title">Thanks for visiting</div>
+  <button mat-menu-item (click)="goToPortfolio()">&bull;&nbsp;See My Full Portfolio</button>
+</mat-menu>
