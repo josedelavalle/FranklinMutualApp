@@ -1,3 +1,6 @@
+<span matTooltip="You can search by Name, Address, or Phone Number">
+  <i class="fa fa-info" (click)="openSnackBar()"></i>
+</span>
 <mat-form-field class="form-field">
   <input matInput type="text" (keyup)="inputEntered(filterValue)" placeholder="Filter Agents" [(ngModel)]="filterValue"/>
   <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="filterValue='';inputEntered(filterValue)">

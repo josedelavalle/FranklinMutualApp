@@ -12,11 +12,24 @@
     <p class="address-top">
       {{agent.address}}
     </p>
-    <p class="address-bottom">
+    <p class="address-top">
       {{agent.city}}, {{agent.state}} {{agent.zip}}
     </p>
+    <p class="address-bottom">
+      {{agent.county}} COUNTY
+    </p>
+    <div class="map-container">
+      <img *ngIf="agent.showMap" src="https://maps.googleapis.com/maps/api/staticmap?center={{agent.latitude}},{{agent.longitude}}&zoom=15&size=200x200&key=AIzaSyBy34i8mK7IXxcAqmZfOEX70XZtNEt7D7s" />
+      <a class="directions-button-container" href="https://www.google.com/maps/search/{{agent.address}} {{agent.city}} {{agent.state}} {{agent.zip}} />" target="_blank">
+        <button *ngIf="agent.showMap" mat-button class="directions-button">GET DIRECTIONS</button>
+      </a>
+    </div>
     <mat-card-actions class="card-actions">
+      <button *ngIf="!agent.showMap" mat-button (click)="agent.showMap=true">SHOW MAP</button>
+      <button *ngIf="agent.showMap" mat-button (click)="agent.showMap=false">HIDE MAP</button>
+      <a *ngIf="agent.url" href="{{agent.url}}" target="_blank">
         <button mat-button>MORE INFO</button>
+      </a>
     </mat-card-actions>
   </mat-card-content>
   

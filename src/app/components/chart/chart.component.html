@@ -1,1 +1,8 @@
-<google-chart class="chart" [data]="chartData" height=100></google-chart>
+<div *ngIf="agencies">
+    <div class="chart-container" *ngIf="getAgencies().length > 0">
+        <google-chart #cchart class="chart" [data]="chartData"></google-chart>
+    </div>
+    <div *ngIf="getAgencies().length === 0">
+        <span class="no-agents-found">No Agents Found with filter {{filterValue}}</span>
+    </div>
+</div>    

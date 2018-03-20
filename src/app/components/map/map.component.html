@@ -1,16 +1,23 @@
-<agm-map (mapReady)="mapReady($event)" [scrollwheel]="false" [latitude]="defaultLat" [longitude]="defaultLng" [zoom]="8" [mapTypeId]="'hybrid'">
+<agm-map (mapReady)="mapReady($event)" [draggable]="false" [scrollwheel]="false" [latitude]="defaultLat" [longitude]="defaultLng" [zoom]="8" [mapTypeId]="'hybrid'">
  
  <!-- <div *ngFor="let marker of agencies">
   <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
  </div>  -->
- <agm-heatmap-layer [data]="data" [radius]="20"></agm-heatmap-layer>
- <agm-circle [latitude]="defaultLat"
+ <agm-heatmap-layer [data]="data" [radius]="50"></agm-heatmap-layer>
+ <agm-circle (centerChange)="circleDragged($event)" 
+                  (radiusChange)="radiusChanged($event)" 
+                  [latitude]="defaultLat"
                   [longitude]="defaultLng"
                   [circleDraggable]="true"
                   [editable]="true"
-                  [fillColor]="'red'"
-                  [radius]="50000"
-      >
-      </agm-circle>
+                  [fillColor]="'#D0112B'"
+                  [radius]="25000">
+</agm-circle>
+
 </agm-map>
+<div class="search-icon-container"
+      matTooltip="Filter agents to only those located within red circle">
+      <i class="fa fa-search search-icon" (click)="doSearch()"></i>
+      <div class="search-icon-text">Search</div>
+</div>
   

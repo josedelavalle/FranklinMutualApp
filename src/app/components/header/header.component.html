@@ -1,13 +1,20 @@
 <mat-toolbar color="default">
   <div class="col">
-    <img height="50" src="assets/logo.png" />
+    <a href="https://www.fmiweb.com/site/" target="_blank">
+      <img class="d-none d-sm-inline" height="50" src="assets/logo.png" />
+      <img class="d-inline d-sm-none" height="30" src="assets/logo-small.png" />
+    </a>
+    <i class="fa fa-volume-up" (click)="playAudio()"></i>
   </div>
   <div class="col-6 text-center">
     <app-filter></app-filter>
   </div>
   
-  <div class="col text-right">
-    <div class="menu-icon" [matMenuTriggerFor]="appMenu">
+  <div class="col text-right" [matMenuTriggerFor]="appMenu">
+    <small class="d-none d-md-inline">
+      Want Source Code?
+    </small>
+    <div class="menu-icon d-inline">
       <i class="fa fa-bars"></i>
     </div>
   </div>
@@ -15,5 +22,24 @@
 
 <mat-menu #appMenu="matMenu">
   <div class="menu-title">Thanks for visiting</div>
-  <button mat-menu-item (click)="goToPortfolio()">&bull;&nbsp;See My Full Portfolio</button>
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">
+    <i class="fa fa-github"></i>
+    View the code on Github
+  </button>
+  <a href="http://portfolio.josedelavalle.com" target="_blank">
+    <button mat-menu-item>
+      <i class="fa fa-user"></i>
+      See My Full Portfolio
+    </button>
+  </a>
+  
+</mat-menu>
+
+<mat-menu #subMenu="matMenu">
+  <a href="https://github.com/josedelavalle/FranklinMutualApp" target="_blank">
+    <button mat-menu-item>Angular 5 Web App</button>
+  </a>
+  <a href="https://github.com/josedelavalle/FranklinMutalAPI" target="_blank">
+    <button mat-menu-item>.NET Core 2 Web Scraper and API</button>
+  </a>
 </mat-menu>

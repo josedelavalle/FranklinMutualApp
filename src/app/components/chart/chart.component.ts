@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { AgentDataService } from '../../services/agent-data.service';
 
 @Component({
   selector: 'app-chart',
@@ -6,26 +7,78 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-  chartData =  {
-    chartType: 'ColumnChart',
-    dataTable: [
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ],
+  @ViewChild('cchart') cchart;
+  public colorArray: Array<string> = ['#1baae5', '#195772', '#0378aa', '#3e7187'];
+  public agencies: any;
+  public filterValue: string = '';
+  public chartData =  {
+    chartType: 'ColumnChart',    
+    dataTable: [],
     options: {
-      'title': 'Tasks',
+      'title': 'Number of Agents by County',
       'animation': {easing: 'out'},
-      height: 100
+      'height': '100',
+      'legend': 'none',
+      'colors': ['#D0112B'],
     },
   };
 
-  constructor() { }
+  constructor(private agentDataService: AgentDataService) { }
 
-  ngOnInit() {
+  populateChartData(agencies) {
+    this.chartData = Object.create(this.chartData);
+    this.chartData.dataTable = [];
+    var counts = this.groupArray(agencies, 'county');
+    var countsExtended = Object.keys(counts).map(k => {
+      return [k, counts[k]];
+    })
+    var header = ['County', 'Agent Count'];
+    this.chartData.dataTable.push(header);
+    this.chartData.dataTable = this.chartData.dataTable.concat(countsExtended);
   }
 
+  groupArray(arr, field) {
+    var counts = arr.reduce((p, c) => {
+        var name = c[field];
+        if (!p.hasOwnProperty(name)) {
+            p[name] = 0;
+        }
+        p[name]++;
+        return p;
+    }, {});
+    return counts;
+  }
+
+  ngOnInit() {
+    this.agentDataService.getAgentData().subscribe(agencies => {
+      this.agencies = agencies;
+      this.agentDataService.castFilterString.subscribe(v => {
+        this.filterValue = v;
+        this.populateChartData(this.getAgencies());
+      })
+    });
+    this.agentDataService.castAgencies.subscribe(v => {
+      this.agencies = v;
+      if (v) 
+        this.populateChartData(this.getAgencies());
+    });
+    
+  }
+
+  getAgencies() {
+    if (this.filterValue) {
+      this.agencies = this.agencies.map(x => {
+        x.fullname = x.name + ' ' + x.address + ' ' + x.city + ' ' + x.county + ' ' + x.phone + ' ' + x.zip;
+        return x;
+      })
+      return this.agencies.filter(x => x.fullname.toLowerCase().indexOf(this.filterValue.toLowerCase()) > -1);
+    } else {
+      return this.agencies;
+    }
+  }
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.cchart.redraw();
+  }
 }

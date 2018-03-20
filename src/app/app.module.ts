@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 import { MapComponent } from './components/map/map.component';
 import { AgentDataService } from './services/agent-data.service';
+import { UserDataService } from './services/user-data.service';
 import { AgentListComponent } from './components/agent-list/agent-list.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { MaterialModule } from './material.module';
@@ -21,6 +22,8 @@ import { AgmHeatmapModule } from 'agm-heatmap/agm-heatmap.module';
 import { AgentCardComponent } from './components/agent-card/agent-card.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
+
 declare var google: any;
 
 @NgModule({
@@ -49,9 +52,10 @@ declare var google: any;
     }),
     AgmHeatmapModule,
     FlexLayoutModule,
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
+    NgHttpLoaderModule
   ],
-  providers: [AgentDataService],
+  providers: [AgentDataService, UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

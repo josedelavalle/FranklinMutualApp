@@ -10,3 +10,21 @@ agm-map {
     padding: 100px;
     background-color: pink;
 }
+.search-icon-container {
+    z-index: 2;
+    font-size: 3em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fefefe;
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px;
+    cursor: pointer;
+    text-align: center;
+    .search-icon {
+        display: block;
+    }
+    .search-icon-text {
+        font-size: 13px;
+    }
+}

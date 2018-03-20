@@ -2,3 +2,16 @@
     width: 200px;
     font-size: 14px;
 }
+.fa-info {
+    position: relative;
+    top: 5px;
+    left: -5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+@media (max-width: 480px) { 
+    .form-field {
+        width: 120px;
+        font-size: 12px;
+    }
+}

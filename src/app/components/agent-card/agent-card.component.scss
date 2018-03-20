@@ -4,8 +4,31 @@ div {
     flex-wrap: wrap;
     width: 100%; 
 }
+.directions-button-container {
+    margin: auto;
+    padding-top: 10px;
+}
+.directions-button {
+    width: auto;
+    text-align: center;
+}
+.map-container {
+    position: relative;
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+img {
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+a {
+    color: rgba(0,0,0,.87);
+}
 .card-actions {
     padding-bottom: 0;
+    padding-top: 0;
     text-align: center !important;
 }
 .address-top {

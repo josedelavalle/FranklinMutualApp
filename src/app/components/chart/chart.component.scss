@@ -1,3 +1,34 @@
-.chart {
+.chart-container {
+    position: absolute;
     width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.chart {
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    padding: 0 30px;
+    margin-top: -50px;
+
+}
+@media (max-width: 480px) { 
+    .chart {
+        padding: 0;
+    }
+}
+.no-agents-found {
+    text-align: center;
+    margin: auto;
+    font-size: 2em;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    line-height: 0em;
 }
