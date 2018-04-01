@@ -15,7 +15,8 @@ export class ChartComponent implements OnInit {
     chartType: 'ColumnChart',    
     dataTable: [],
     options: {
-      'title': 'Number of Agents by County',
+      'title': 'Agencies by County',
+      'titleTextStyle': { fontName: 'Open Sans' },
       'animation': {easing: 'out'},
       'height': '100',
       'legend': 'none',

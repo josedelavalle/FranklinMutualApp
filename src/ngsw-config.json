@@ -21,7 +21,10 @@
     "resources": {
       "files": [
         "/assets/**"
-      ]
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/**"
+      ] 
     }
   }]
 }

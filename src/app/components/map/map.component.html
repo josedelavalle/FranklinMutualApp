@@ -1,10 +1,39 @@
 <agm-map (mapReady)="mapReady($event)" [draggable]="false" [scrollwheel]="false" [latitude]="defaultLat" [longitude]="defaultLng" [zoom]="8" [mapTypeId]="'hybrid'">
- 
- <!-- <div *ngFor="let marker of agencies">
-  <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
- </div>  -->
- <agm-heatmap-layer [data]="data" [radius]="50"></agm-heatmap-layer>
- <agm-circle (centerChange)="circleDragged($event)" 
+      <div *ngFor="let marker of markers">
+            <agm-marker [iconUrl]="'/assets/logo-smallest.png'" [latitude]="getMarkerLat(marker)" [longitude]="getMarkerLng(marker)">
+                  <agm-info-window #infoWindow>
+                        <h5>{{marker.name}}</h5>
+                        <div>{{marker.address}}</div>
+                        <div>{{marker.city}}, {{marker.state}} {{marker.zip}}</div>
+                        <div>{{marker.count}}</div>
+                        <div>
+                              <i class="fa fa-phone"></i>
+                              <a href="tel:+{{marker.phone}}" class="phone-number">
+                                    {{formatPhoneNumber(marker.phone)}}
+                              </a>
+                        </div>
+                        <div>
+                              <a href="{{marker.url}}" target="_blank">{{marker.url}}</a>
+                        </div>
+                        <small class="remove-marker" (click)="removeMarker(marker)">Remove Marker</small>
+                  </agm-info-window>
+            </agm-marker>
+      </div>
+      <agm-marker [iconUrl]="'/assets/home.png'" [latitude]="userLat" [longitude]="userLng">
+            <agm-info-window *ngIf="userData">
+                  <h5>Your browser's location</h5>
+                  <div>
+                        <span>{{userData.city}}, {{userData.region}}, {{userData.postal}}, {{userData.country}}</span>
+                  </div>
+                  <div>
+                        <small>{{userData.ip}} ({{userData.org}})</small>
+                  </div>
+                  
+            </agm-info-window>
+      </agm-marker>
+      <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [renderOptions]="options"></agm-direction>
+      <agm-heatmap-layer [data]="data" [radius]="50"></agm-heatmap-layer>
+      <agm-circle (centerChange)="circleDragged($event)" 
                   (radiusChange)="radiusChanged($event)" 
                   [latitude]="defaultLat"
                   [longitude]="defaultLng"
@@ -12,12 +41,15 @@
                   [editable]="true"
                   [fillColor]="'#D0112B'"
                   [radius]="25000">
-</agm-circle>
+      </agm-circle>
 
 </agm-map>
-<div class="search-icon-container"
+<div class="search-icon-container" (click)="doSearch()"
       matTooltip="Filter agents to only those located within red circle">
-      <i class="fa fa-search search-icon" (click)="doSearch()"></i>
+      <i class="fa fa-search search-icon"></i>
       <div class="search-icon-text">Search</div>
+</div>
+<div *ngIf="markers && markers.length > 0" class="clear-markers-container" (click)="clearMarkers()">
+      <span>Clear All Markers</span>
 </div>
   

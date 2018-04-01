@@ -1,13 +1,12 @@
 .form-field {
-    width: 200px;
+    width: 100%;
     font-size: 14px;
 }
-.fa-info {
-    position: relative;
-    top: 5px;
-    left: -5px;
-    font-size: 1em;
-    cursor: pointer;
+input, .mat-input-placeholder {
+    text-align: center;
+}
+::ng-deep .mat-form-field-placeholder {
+    text-align: center;
 }
 @media (max-width: 480px) { 
     .form-field {

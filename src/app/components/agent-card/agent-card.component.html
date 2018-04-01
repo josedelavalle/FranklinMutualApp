@@ -1,4 +1,7 @@
-<mat-card class="blog-card">
+<mat-card class="agent-card" (click)="agentSelected()">
+  <div class="selected-agent">
+    <i class="fa fa-map-marker" [ngClass]="{'red': isSelected(agent)}"></i>
+  </div>
   <mat-card-header>
     <mat-card-title>{{agent.name}}</mat-card-title>
     <mat-card-subtitle>
@@ -25,10 +28,10 @@
       </a>
     </div>
     <mat-card-actions class="card-actions">
-      <button *ngIf="!agent.showMap" mat-button (click)="agent.showMap=true">SHOW MAP</button>
-      <button *ngIf="agent.showMap" mat-button (click)="agent.showMap=false">HIDE MAP</button>
+      <button *ngIf="!agent.showMap" mat-raised-button (click)="agent.showMap=true" matTooltip="Show Local Map" [matTooltipPosition]="'below'">SHOW MAP</button>
+      <button *ngIf="agent.showMap" mat-raised-button (click)="agent.showMap=false" matTooltip="Hide Local Map" [matTooltipPosition]="'below'">HIDE MAP</button>
       <a *ngIf="agent.url" href="{{agent.url}}" target="_blank">
-        <button mat-button>MORE INFO</button>
+        <button mat-raised-button matTooltip="Go to {{agent.url}}" [matTooltipPosition]="'below'">MORE INFO</button>
       </a>
     </mat-card-actions>
   </mat-card-content>

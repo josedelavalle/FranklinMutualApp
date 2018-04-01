@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@angular/service-worker": "^5.2.0",
+    "agm-direction": "^0.4.1",
     "agm-heatmap": "0.0.6",
     "angular2-fontawesome": "^5.2.1",
     "bootstrap": "^4.0.0",

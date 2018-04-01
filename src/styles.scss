@@ -1,6 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
     background-color: #a1a2a3 !important;
+    font-family: 'Open Sans', sans-serif !important;
 }
 * {
     outline: none !important;
@@ -13,6 +14,12 @@ app-chart {
     width: 100%;
     height: 100%;
 }
+.padding-left-0 {
+    padding-left: 0px !important;
+}
+.padding-right-0 {
+    padding-right: 0px !important;
+}
 .mat-card-header-text {
     margin: 0 !important;
 }
@@ -21,3 +28,7 @@ app-chart {
     padding-bottom: 0 !important;
 }
 svg > g > g:last-child { pointer-events: none }
+
+.gmnoprint, .gm-style-cc {
+    display: none !important;
+}

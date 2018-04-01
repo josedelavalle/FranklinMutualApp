@@ -1,8 +1,13 @@
 mat-toolbar {
     margin-bottom: 10px;
 }
-.fa-bars, .fa-volume-up {
+.fa {
+    color: #666666;
+    font-size: 1.8em;
     cursor: pointer;
+}
+.fa-info, .fa-volume-up {
+    margin-right: 20px;
 }
 small {
     font-size: 0.6em;
@@ -11,10 +16,14 @@ small {
     padding-right: 10px;
     cursor: pointer;
 }
+.fa-github {
+    padding-right: 5px;
+}
 .fa-user {
-    padding-right: 2px;
+    padding-right: 10px;
 }
 .menu-title {
+    text-align: center;
     background-color: #ddd;
     padding: 10px;
 }
@@ -24,11 +33,15 @@ small {
 a {
     text-decoration: none;
 }
-@media (max-width: 480px) { 
+@media (max-width: 550px) { 
     .col {
         padding: 0;
     }
     button.mat-menu-item {
         font-size: 10px;
+    }
+    .fa {
+        font-size: 1em;
+        padding-right: 3px;
     }
 }

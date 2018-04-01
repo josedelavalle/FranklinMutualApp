@@ -16,6 +16,7 @@ import { AgentListComponent } from './components/agent-list/agent-list.component
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { MaterialModule } from './material.module';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { GridComponent } from './components/grid/grid.component'
 import { AgmHeatmapModule } from 'agm-heatmap/agm-heatmap.module';
@@ -50,6 +51,7 @@ declare var google: any;
       apiKey: 'AIzaSyAFzBg6EWivP2e2GR0DmXdosJKqJylV9AQ',
       libraries: ['visualization']
     }),
+    AgmDirectionModule,
     AgmHeatmapModule,
     FlexLayoutModule,
     Angular2FontawesomeModule,

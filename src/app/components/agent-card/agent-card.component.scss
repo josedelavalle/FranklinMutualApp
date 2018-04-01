@@ -6,11 +6,14 @@ div {
 }
 .directions-button-container {
     margin: auto;
-    padding-top: 10px;
+    padding: 10px 5px;
 }
 .directions-button {
     width: auto;
     text-align: center;
+}
+.mat-button {
+    font-family: 'Open Sans', sans-serif !important;
 }
 .map-container {
     position: relative;
@@ -30,9 +33,11 @@ a {
     padding-bottom: 0;
     padding-top: 0;
     text-align: center !important;
+
 }
 .address-top {
     margin: 0;
+    text-transform: uppercase;
 }
 .address-bottom {
     margin-bottom: 10px;
@@ -44,11 +49,34 @@ a {
     padding-right: 5px;
 }
 .mat-card-title {
-    font-size: 1.1em;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: -0.05em;
+    font-weight: 500;
+    font-size: 1.25em;
     line-height: 1.2em;
+    word-break: break-word;
 }
-
-.blog-card {
+.agent-card {
     width: 100%;
     margin: 30px 0 0;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+        -webkit-box-shadow: 0px 4px 15px 1px rgba(156,156,156,1);
+        -moz-box-shadow: 0px 4px 15px 1px rgba(156,156,156,1);
+        box-shadow: 0px 4px 15px 1px rgba(156,156,156,1);
+    }
+}
+
+.selected-agent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #eeeeee;
+    padding: 5px;
+    width: auto;
+    font-size: 1.5em;
+    .red {
+        color: #D0112B;
+    }
 }

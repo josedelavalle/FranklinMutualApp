@@ -3,9 +3,21 @@
     margin-bottom: 10px;
 }
 .showing-string {
-    position: absolute;
+    position: sticky;
+    top: 0;
     z-index: 2;
     background-color: #ddd;
+    padding: 10px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    span {
+        margin: auto;
+        font-weight: 600;
+    }
+}
+.container-fluid {
+    position: absolute;
 }
 .agency-list {
     position: absolute;

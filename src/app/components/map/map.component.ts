@@ -16,50 +16,112 @@ export class MapComponent implements OnInit {
   public agencies: any;
   public data: any;
   public showSearch : boolean = false;
+  public userLat: number;
+  public userLng: number;
   public defaultLat: number = 40.2171;
   public defaultLng: number = -74.7429;
-
+  public markers: Array<any> = [];
   public circle = {
-    radius: 50000,
+    radius: 25000,
     latitude: this.defaultLat,
     longitude: this.defaultLng
   }
-
+  public dir = undefined;
   public map: any;
   constructor(private agentDataService: AgentDataService, private userDataService: UserDataService) { }
 
   ngOnInit() {
+    this.agentDataService.castSelected.subscribe(s => {
+      this.markers = s;
+      if (s && s.length > 0) {
+        this.dir = {
+          origin: { 
+            lat: Number(this.userLat), 
+            lng: Number(this.userLng)
+          },
+          destination: {
+            lat: Number(s[s.length - 1].latitude),
+            lng: Number(s[s.length - 1].longitude)
+          }
+        };
+      } else {
+        // no markers on map currently, so remove
+        // setting to null or undefined doesn't clear directions
+        // so set the origin and destination to the users location as workaround
+        this.dir = {
+          origin: { 
+            lat: Number(this.userLat), 
+            lng: Number(this.userLng)
+          },
+          destination: {
+            lat: Number(this.userLat), 
+            lng: Number(this.userLng)
+          }
+        };
+      }
+      
+    });
+
     this.userDataService.getUserData().subscribe(userData => { 
       this.userData = userData;
       console.log('rough position by ip', userData);
-      var lat = this.userData.loc.split(",")[0];
-      var lon = this.userData.loc.split(",")[1];
+      this.userLat = this.userData.loc.split(",")[0];
+      this.userLng = this.userData.loc.split(",")[1];
       var region = this.userData.region;
       // only move circle if user's location is within New Jersey
       // as agents list only consists of NJ addresses
       if (region == "New Jersey") {
-        this.defaultLat = Number(lat);
-        this.defaultLng = Number(lon);
+        this.defaultLat = Number(this.userLat);
+        this.defaultLng = Number(this.userLng);
         // lets see if user agrees to allow more precise location
         navigator.geolocation.getCurrentPosition((position: any) => { 
           // try to get location through browser geolocation
           console.log('precise position by browser geolocation', position);
           this.defaultLat = position.coords.latitude;
           this.defaultLng = position.coords.longitude;
+          this.userLat = this.defaultLat;
+          this.userLng = this.defaultLng;
         });
       }
     });
-    
-    
   }
+
+  options = {
+    suppressMarkers: true,
+    draggable: false,
+    preserveViewport: true
+  };
 
   public mapReady(map) {
     this.map = map;
     this.getData();
   }
 
+  clearMarkers() {
+    this.markers.forEach(m => {
+      this.removeMarker(m);
+    })
+    this.markers = [];
+  }
+
   toggleSearchIcon() {
     this.showSearch = !this.showSearch;
+  }
+
+  getMarkerLat(m) {
+    return Number(m.latitude);
+  }
+
+  getMarkerLng(m) {
+    return Number(m.longitude);
+  }
+
+  formatPhoneNumber(p) {
+    return "(" + p.substring(0,3) + ")" + p.substring(3,6) + "-" + p.substring(6,10);
+  }
+
+  removeMarker(m) {
+    this.agentDataService.agentSelected(m);
   }
 
   doSearch() {

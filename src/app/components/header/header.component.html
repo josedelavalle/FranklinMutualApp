@@ -1,20 +1,21 @@
 <mat-toolbar color="default">
-  <div class="col">
-    <a href="https://www.fmiweb.com/site/" target="_blank">
+  <div class="col padding-left-0">
+    <a href="https://www.fmiweb.com/site/" target="_blank" matTooltip="Since 1879" [matTooltipPosition]="'after'">
       <img class="d-none d-sm-inline" height="50" src="assets/logo.png" />
       <img class="d-inline d-sm-none" height="30" src="assets/logo-small.png" />
     </a>
-    <i class="fa fa-volume-up" (click)="playAudio()"></i>
+    
   </div>
   <div class="col-6 text-center">
     <app-filter></app-filter>
   </div>
   
-  <div class="col text-right" [matMenuTriggerFor]="appMenu">
-    <small class="d-none d-md-inline">
-      Want Source Code?
-    </small>
-    <div class="menu-icon d-inline">
+  <div class="col text-right padding-right-0">
+    <i class="fa fa-volume-up" (click)="playAudio()" matTooltip="Play audio" [matTooltipPosition]="'before'"></i>
+    <span matTooltip="Information about this app" [matTooltipPosition]="'before'">
+      <i class="fa fa-info" (click)="openSnackBar()"></i>
+    </span>
+    <div [matMenuTriggerFor]="appMenu" matTooltip="Want Source Code?" [matTooltipPosition]="'before'" class="menu-icon d-inline">
       <i class="fa fa-bars"></i>
     </div>
   </div>

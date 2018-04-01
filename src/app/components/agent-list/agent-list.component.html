@@ -1,6 +1,8 @@
 <div class="agency-list">
   <div class="container-fluid" *ngIf="agencies">
-    <div class="showing-string">Showing {{getAgencies().length}} of {{allagencies}}</div>
+    <div class="showing-string">
+      <span>Showing {{getAgencies().length}} of {{allagencies}} agencies</span>
+    </div>
     <div class="col-xs-12 col-md-6 col-xl-4" *ngFor="let agent of getAgencies()">
         <app-agent-card [agent]="agent"></app-agent-card>
     </div>
