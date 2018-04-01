@@ -20,6 +20,7 @@ export class MapComponent implements OnInit {
   public userLng: number;
   public defaultLat: number = 40.2171;
   public defaultLng: number = -74.7429;
+  public njCenter: coords = {lat: this.defaultLat, lng: this.defaultLng};
   public markers: Array<any> = [];
   public circle = {
     radius: 25000,
@@ -65,8 +66,8 @@ export class MapComponent implements OnInit {
     this.userDataService.getUserData().subscribe(userData => { 
       this.userData = userData;
       console.log('rough position by ip', userData);
-      this.userLat = this.userData.loc.split(",")[0];
-      this.userLng = this.userData.loc.split(",")[1];
+      this.userLat = Number(this.userData.loc.split(",")[0]);
+      this.userLng = Number(this.userData.loc.split(",")[1]);
       var region = this.userData.region;
       // only move circle if user's location is within New Jersey
       // as agents list only consists of NJ addresses
@@ -155,7 +156,12 @@ export class MapComponent implements OnInit {
 
   @HostListener('window:resize')
   onWindowResize() {
-    setTimeout(() => this.map.setCenter({ lat: this.defaultLat, lng: this.defaultLng }));
+    setTimeout(() => this.map.setCenter({ lat: this.njCenter.lat, lng: this.njCenter.lng }));
   }
 
+}
+
+export interface coords {
+  lat: number,
+  lng: number
 }

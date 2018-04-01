@@ -3,17 +3,43 @@
     margin-bottom: 10px;
 }
 .showing-string {
-    position: sticky;
-    top: 0;
-    z-index: 2;
+    width: 100%;
+    z-index:99;
+    padding: 5px;
     background-color: #ddd;
-    padding: 10px;
+    color: #666666;
     text-align: center;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     span {
         margin: auto;
-        font-weight: 600;
+        font-weight: 400;
+        font-size: 1em;
+    }
+    .sort-select {
+        margin: unset;
+        text-align: left;
+        letter-spacing: 0px;
+        font-weight: 400;
+        color: #666666;
+        
+    }
+    .sort-select-menu {
+        //max-width: 200px;
+    }
+}
+.checkbox-option {
+    padding-left: 0;
+    position: relative;
+    top: 3px;
+    text-indent: 15px;
+    .checkbox-label {
+        text-indent: 2px;
+    }
+}
+@media (max-width: 550px) {
+    .showing-string {
+        letter-spacing: 0px;
     }
 }
 .container-fluid {
@@ -21,9 +47,9 @@
 }
 .agency-list {
     position: absolute;
-    top: 0;
+    top: 80px;
     left: 0;
-    height: 100%;
+    height: calc(100% - 80px);
     width: 100%;
     overflow-y: scroll !important;
     overflow-x: hidden;

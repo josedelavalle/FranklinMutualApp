@@ -11,7 +11,8 @@
       "versionedFiles": [
         "/*.bundle.css",
         "/*.bundle.js",
-        "/*.chunk.js"
+        "/*.chunk.js",
+        "/fontawesome*"
       ]
     }
   }, {
@@ -23,7 +24,15 @@
         "/assets/**"
       ],
       "urls": [
-        "https://fonts.googleapis.com/**"
+        "https://fonts.googleapis.com/**",
+        "https://franklinmutualapi.azurewebsites.net/**",
+        "https://www.googletagmanager.com/gtag/js?id=UA-88570521-1",
+        "https://maps.googleapis.com/**",
+        "https://ipinfo.io/json",
+        "https://fonts.gstatic.com/**",
+        "https://maps.gstatic.com/**",
+        "https://www.gstatic.com/**",
+        "https://www.fmiweb.com/site/pub/blogimages/**"
       ] 
     }
   }]

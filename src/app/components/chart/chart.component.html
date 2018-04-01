@@ -1,5 +1,5 @@
 <div *ngIf="agencies">
-    <div class="chart-container" *ngIf="getAgencies().length > 0">
+    <div #chartContainer class="chart-container" *ngIf="getAgencies().length > 0">
         <google-chart #cchart class="chart" [data]="chartData"></google-chart>
     </div>
     <div *ngIf="getAgencies().length === 0">

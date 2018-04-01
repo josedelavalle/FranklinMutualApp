@@ -1,4 +1,4 @@
-<agm-map (mapReady)="mapReady($event)" [draggable]="false" [scrollwheel]="false" [latitude]="defaultLat" [longitude]="defaultLng" [zoom]="8" [mapTypeId]="'hybrid'">
+<agm-map (mapReady)="mapReady($event)" [draggable]="false" [scrollwheel]="false" [latitude]="njCenter.lat" [longitude]="njCenter.lng" [zoom]="8" [mapTypeId]="'hybrid'">
       <div *ngFor="let marker of markers">
             <agm-marker [iconUrl]="'/assets/logo-smallest.png'" [latitude]="getMarkerLat(marker)" [longitude]="getMarkerLng(marker)">
                   <agm-info-window #infoWindow>

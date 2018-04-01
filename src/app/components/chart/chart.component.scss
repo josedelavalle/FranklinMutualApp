@@ -1,21 +1,12 @@
 .chart-container {
     position: absolute;
-    width: 100%;
+    width: auto;
     height: 100%;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: white;
-}
-.chart {
-    margin: auto;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    padding: 0 30px;
-    margin-top: -50px;
-
+    background-color: #ddd;
 }
 @media (max-width: 480px) { 
     .chart {

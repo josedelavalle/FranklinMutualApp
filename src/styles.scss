@@ -1,6 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
-    background-color: #a1a2a3 !important;
+    background-color: #666666 !important;
     font-family: 'Open Sans', sans-serif !important;
 }
 * {
@@ -31,4 +31,17 @@ svg > g > g:last-child { pointer-events: none }
 
 .gmnoprint, .gm-style-cc {
     display: none !important;
+}
+
+.mat-grid-tile {
+    border-radius: 2px;
+}
+.mat-grid-tile-header {
+    padding: 0 !important;
+    height: 80px !important;
+    background-color: #ddd !important;
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+    text-indent: 2px;
 }

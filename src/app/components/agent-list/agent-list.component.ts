@@ -13,6 +13,15 @@ export class AgentListComponent implements OnInit {
   public filterValue: string = '';
   constructor(private agentDataService: AgentDataService) { }
   public allagencies: number = 0;
+  public sortSelected: string = 'name';
+  public sortReverse: boolean = false;
+  public sortOptions: Array<options> = [
+    {value: 'name', viewValue: 'Name'},
+    {value: 'address', viewValue: 'Street Address'},
+    {value: 'city', viewValue: 'City'},
+    {value: 'county', viewValue: 'County'},
+    {value: 'phone', viewValue: 'Phone Number'}
+  ];
   ngOnInit() {
     this.agentDataService.getAgentData().subscribe(agencies => {
       this.agencies = agencies;
@@ -25,8 +34,9 @@ export class AgentListComponent implements OnInit {
       this.agencies = v;
     })
   }
-
+  
   getAgencies() {
+    if (!this.agencies) return [];
     if (this.filterValue) {
       this.agencies = this.agencies.map(x => {
         x.fullname = x.name + ' ' + x.address + ' ' + x.city + ' ' + x.county + ' ' + x.phone + ' ' + x.zip;
@@ -37,4 +47,9 @@ export class AgentListComponent implements OnInit {
       return this.agencies;
     }
   }
+}
+
+export interface options {
+  value: string,
+  viewValue: string
 }

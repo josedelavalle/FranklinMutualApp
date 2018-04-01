@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 import { MapComponent } from './components/map/map.component';
 import { AgentDataService } from './services/agent-data.service';
+import { BlogDataService } from './services/blog-data.service';
 import { UserDataService } from './services/user-data.service';
 import { AgentListComponent } from './components/agent-list/agent-list.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -24,6 +25,8 @@ import { AgentCardComponent } from './components/agent-card/agent-card.component
 import { ChartComponent } from './components/chart/chart.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
+import { BlogCardComponent } from './components/blog-card/blog-card.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 declare var google: any;
 
@@ -36,7 +39,8 @@ declare var google: any;
     GridComponent,
     AgentCardComponent,
     ChartComponent,
-    FilterComponent
+    FilterComponent,
+    BlogCardComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +59,10 @@ declare var google: any;
     AgmHeatmapModule,
     FlexLayoutModule,
     Angular2FontawesomeModule,
-    NgHttpLoaderModule
+    NgHttpLoaderModule,
+    OrderModule
   ],
-  providers: [AgentDataService, UserDataService],
+  providers: [AgentDataService, UserDataService, BlogDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

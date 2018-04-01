@@ -1,9 +1,27 @@
+<mat-grid-tile-header>
+    <div class="showing-string row">
+        <span class="col-xs-12 col-sm-7">Showing {{getAgencies().length}} of {{allagencies}} agencies</span>
+        <span class="col-xs-12 col-sm-5">
+          <mat-form-field class="sort-select">
+              <mat-select class="sort-select-menu" [(value)]="sortSelected" placeholder="Sort by">
+                <mat-option class="checkbox-option" [disabled]="true">
+                    <mat-checkbox [(ngModel)]="sortReverse">
+                      <span class="checkbox-label">Reverse Order</span>
+                    </mat-checkbox>
+                </mat-option>
+                <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+                  {{option.viewValue}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+          
+        </span>
+      </div>
+</mat-grid-tile-header>
 <div class="agency-list">
   <div class="container-fluid" *ngIf="agencies">
-    <div class="showing-string">
-      <span>Showing {{getAgencies().length}} of {{allagencies}} agencies</span>
-    </div>
-    <div class="col-xs-12 col-md-6 col-xl-4" *ngFor="let agent of getAgencies()">
+    
+    <div class="col-xs-12 col-md-6 col-xl-4" *ngFor="let agent of getAgencies() | orderBy: sortSelected : sortReverse">
         <app-agent-card [agent]="agent"></app-agent-card>
     </div>
   </div>
