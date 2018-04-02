@@ -1,27 +1,9 @@
-# FranklinMutualApp
+<img src="http://me.josedelavalle.com/images/JoseDeLavalleLogo.png" />
+Angular 5 Responsive Web Application for Franklin Mutual
+<a target="_blank" href="https://fmi.josedelavalle.com">fmi.josedelavalle.com</a>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+This is an Angular 5 application that utilizes Material Design, Bootstrap, Google Maps and Charts to allow for analyzing of Franklin Mutual agencies.  Agencies can be added to the map, with directions from the user's browser location.  An edittable limiting circle can be manipulated to only return agencies within a certain radius or desired center.  Agencies can be further filtered by a single text field that narrows down by name, address, and phone number.  Sorting capabilities of varying flavors are also provided to help you get to what you are looking for.  Found set of agencies are then transformed dynamically into a data visualization in the form of a bar graph of # of Agencies by County.
 
-## Development server
+Blog entries from the Franklin Mutual Insurance website are also shown with meta data details and a link to the full article.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+There is an accompanying .NET Core backend that scrapes and makes this data available, that can be found <a target="_blank" href="http://github.com/josedelavalle/FranklinMutualAPI">here</a>.
